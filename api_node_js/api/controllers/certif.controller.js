@@ -16,4 +16,4 @@ const postCertif = async (req, res) => {
 }
 
 
-module.exports = {getBidBelong};
+module.exports = {postCertif};

@@ -1,6 +1,4 @@
 import {Component, OnInit, QueryList, ViewChildren} from '@angular/core';
-import {Merchants} from '../../../models/merchants';
-import {tableData} from './data';
 import {GarageService} from './garage.service';
 import {DecimalPipe} from '@angular/common';
 import {Observable} from 'rxjs';

@@ -39,6 +39,7 @@ users.get("/", async (req, res) => {
 });
 
 users.post("/login", async (req, res) => {
+    console.log('login')
     models.user.findOne({
         where: {
             email: req.body.email,
@@ -105,8 +106,8 @@ users.post("/register",
         }
         const today = new Date();
         const userData = {
-            name: req.body.name,
-            surname: req.body.surname,
+            firstname: req.body.name,
+            lastname: req.body.surname,
             age: req.body.age,
             sexe: req.body.sexe,
             telephone: req.body.telephone,

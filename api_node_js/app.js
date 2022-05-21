@@ -73,6 +73,8 @@ app.use((error, req, res, next) => {
 
 
 // Start the app
-app.listen(process.env.PORT || 3000, function() {
+let port = process.env.PORT || 3000
+console.log(port)
+app.listen(5000, function() {
     console.log(`Server Started on port: 5000`)
 })
