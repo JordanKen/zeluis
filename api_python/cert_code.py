@@ -7,9 +7,9 @@ from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 
-def cert(h_name,h_CA,key,name0,name1,alt_names,basic_contraints,now,cert,my_cert_pem,my_key_pem):
+def cert(h_name):
+    print(h_name)
     server_IP = ''
-    h_name = 'AREA ASSURANCES'
     h_CA= 'BLUE CERT'
 
     key = rsa.generate_private_key(

@@ -1,8 +1,8 @@
 var express = require('express');
 var certif = express.Router();
 const auth = require("../middleware/Auth/auth.middleware");
-var garage_controller = require('../controllers/bidBelong.controller');
+var certif_controller = require('../controllers/certif.controller');
 
-certif.post('/', garage_controller.getBidBelong);
+certif.post('/', certif_controller.postCertif);
 
 module.exports = certif;

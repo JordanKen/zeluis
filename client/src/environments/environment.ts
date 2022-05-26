@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  URI: 'http://localhost:5000/api/v1/',
-  API: 'http://localhost:5000/api/v1/',
+  URI: 'http://localhost:3000/api/v1/',
+  API: 'http://localhost:3000/api/v1/',
   authTokenKey: '6a3f321cf1b258015af91a9e49203b23e49b99bf',
   stripeKey: 'pk_test_DVAYtghfj48mnkPlrOV4YD0E',
   apiLocal : 'http://localhost:5000/',
