@@ -17,26 +17,20 @@
             <div class="modal-body">
               <form [formGroup]="garageForm" name="formG">
                 <div class="form-group">
-                  <label for="name">Name</label>
+                  <label for="name">Company name</label>
                   <div class="input-group">
-                    <input id="name" formControlName="name" type="text" class="form-control" placeholder="garage name">
+                    <input id="certname" formControlName="certname" type="text" class="form-control" placeholder="Company name">
                   </div>
-                  <label>Open Hour</label>
+                  <label>BP Company</label>
                   <div class="input-group">
-                    <input id="openHour" formControlName="openHour" type="time" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                    <input id="bpcompany" formControlName="bpcompany" type="text" class="form-control" placeholder="example: BP:15002" name="dp" ngbDatepicker #dp="ngbDatepicker">
                   </div>
-                  <label>Lock Hour</label>
+                  <label>Number</label>
                   <div class="input-group">
-                    <input formControlName="lockHour" id="lockHour" type="time" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                    <input formControlName="number" id="number" type="number" class="form-control" placeholder="enter the number here" name="nbr" ngbDatepicker #dp="ngbDatepicker">
                   </div>
-                  <label>Description</label>
-                  <div class="input-group">
-                    <input formControlName="description" id="description" type="" class="form-control" placeholder="description">
-                  </div>
-                  <label>Avatar</label>
-                  <div class="input-group">
-                    <input formControlName="avatar" type="file" id="avatar" class="form-control" (change)="handleFileInput($event.target.files)">
-                  </div>
+    
+                  
                 </div>
               </form>
             </div>
