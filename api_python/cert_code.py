@@ -53,6 +53,6 @@ def cert(h_name):
 
     with open('private.key', 'wb') as c:
         c.write(my_key_pem)
-        result = { my_cert_pem, my_key_pem }
+        result = {"my_cert_pem": str(my_cert_pem), "my_key_pem": str(my_key_pem) }
         print(json.dumps(result))
         return json.dumps(result)
