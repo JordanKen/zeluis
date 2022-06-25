@@ -11,8 +11,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.certificate.belongsTo(models.user)
-      models.certificate.belongsTo(models.payment)
+      models.certificate.belongsTo(models.user, {foreignKey:"user_id"})
+      //models.certificate.belongsTo(models.payment)
     }
   }
   certificate.init({
@@ -29,10 +29,10 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     parameter_pk: DataTypes.INTEGER,
     user_id: DataTypes.INTEGER,
-    payment_id: DataTypes.INTEGER,
+    //payment_id: DataTypes.INTEGER,
   }, {
     sequelize,
-    modelName: 'certificate',
+    modelName: 'certificate'
   });
   return certificate;
 };

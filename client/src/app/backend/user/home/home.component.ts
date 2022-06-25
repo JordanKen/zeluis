@@ -7,51 +7,60 @@ import {Garage} from "../../../models/garage";
 import {environment} from "../../../../environments/environment";
 import { GarageService } from '../../admin/garages/garage.service';
 import { MerchantSortableDirective } from '../../admin/garages/merchant-sortable.directive';
+import { HomeService } from './home.service';
+import { Certificate } from 'src/app/models/certificate';
+import { AuthService } from 'src/app/core/auth';
 
 @Component({
   selector: 'app-merchants',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  providers: [GarageService, DecimalPipe]
+  providers: [HomeService, DecimalPipe]
 })
 export class HomeComponent implements OnInit {
   breadCrumbItems: any;
   closeResult = '';
   newGarage : Garage;
-  garageForm: FormGroup;
+  certificateForm: FormGroup;
   tableData: Garage[];
-  tables$: Observable<Garage[]>;
+  tables$: Observable<Certificate[]>;
   total$: Observable<number>;
   image: File;
   api = environment.apiLocal;
 
   @ViewChildren(MerchantSortableDirective) headers: QueryList<MerchantSortableDirective>;
+  currentUser: any;
 
-  constructor(public service: GarageService, private modalService: NgbModal, private formBuilder: FormBuilder) {
-    this.garageForm = this.formBuilder.group({
-      name: ['', [Validators.required]],
-      openHour: [''],
-      lockHour: [''],
-      avatar: [''],
-      description: ['']
+  constructor(public service: HomeService, private modalService: NgbModal, private formBuilder: FormBuilder, private authService:AuthService) {
+    this.certificateForm = this.formBuilder.group({
+      h_name: ['', [Validators.required]],
     });
+
+    this.authService.getUserByToken().subscribe(
+      data => {
+        if(data){
+          this.currentUser = data['response'].user;
+          console.log(this.currentUser)
+          this._fetchData();
+        }
+      }
+    )
 
   }
 
   ngOnInit() {
-    this.breadCrumbItems = [{label: 'Shreyu', path: '/'}, {label: 'Paramètrages', path: '/'}, {
-      label: 'Marchands',
+    this.breadCrumbItems = [{label: 'Shreyu', path: '/'}, {label: 'Acceuil', path: '/'}, {
+      label: 'Certificats',
       active: true
     }];
-
-    this._fetchData();
     console.log(this.tables$);
   }
 
   _fetchData() {
-    this.service.getAll().subscribe(
+    this.service.getAll(this.currentUser.id).subscribe(
       res => {
-        this.tableData = res;
+        this.tableData = res["data"];
+        console.log(res)
       }
     );
   }
@@ -61,7 +70,7 @@ export class HomeComponent implements OnInit {
   }
 
   get f() {
-    return this.garageForm.controls;
+    return this.certificateForm .controls;
   }
 
   open(content) {
@@ -71,18 +80,8 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  prepare() {
-    this.newGarage = new Garage();
-    this.newGarage.name = this.garageForm.get('name').value;
-    this.newGarage.avatar = this.image;
-    this.newGarage.openHour = this.garageForm.get('openHour').value;
-    this.newGarage.lockHour = this.garageForm.get('lockHour').value;
-    this.newGarage.description = this.garageForm.get('description').value;
-  }
-
   save() {
-    this.prepare();
-    this.service.save(this.newGarage);
+    this.service.createCertificate(this.certificateForm.get("h_name").value);
     this.modalService.dismissAll();
   }
 

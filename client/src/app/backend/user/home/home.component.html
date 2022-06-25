@@ -53,35 +53,47 @@
             <thead>
             <tr>
               <th sortable="id">Id</th>
-              <th sortable="name">Name</th>
-              <th sortable="openHour" >Open Hour</th>
-              <th sortable="lockHour" >Lock Hour</th>
-              <th sortable="description">Description</th>
-              <th sortable="avatar">Avatar</th>
+              <th sortable="subject_name">Subject name</th>
+              <th sortable="ca_name" >Ca name</th>
+              <th sortable="version" >Version</th>
+              <th sortable="serial_num">Serial number</th>
+              <th sortable="hash">Hash</th>
+              <th sortable="validity_begin">Start date</th>
+              <th sortable="validity_end">End date</th>
+              <th sortable="type">Type</th>
             </tr>
             </thead>
             <tbody>
-            <tr tr *ngFor="let table of tableData">
+            <tr *ngFor="let table of tableData">
               <td>
                 <ngb-highlight [result]="table.id" ></ngb-highlight>
               </td>
               <td>
-                <ngb-highlight [result]="table.name" ></ngb-highlight>
+                <ngb-highlight [result]="table.subject_name" ></ngb-highlight>
               </td>
               <td>
-                <ngb-highlight [result]="table.openHour" ></ngb-highlight>
+                <ngb-highlight [result]="table.ca_name" ></ngb-highlight>
               </td>
               <td>
-                <ngb-highlight [result]="table.lockHour" ></ngb-highlight>
+                <ngb-highlight [result]="table.version" ></ngb-highlight>
               </td>
               <td>
-                <ngb-highlight [result]="table.description" ></ngb-highlight>
+                <ngb-highlight [result]="table.serial_num" ></ngb-highlight>
               </td>
               <td>
-                <img [src]=api+table.avatar height="50">
+                <ngb-highlight [result]="table.hash" ></ngb-highlight>
               </td>
               <td>
-                <i class="uil uil-edit-alt font-size-14" ></i>Edit
+                <ngb-highlight [result]="table.validity_begin" ></ngb-highlight>
+              </td>
+              <td>
+                <ngb-highlight [result]="table.validity_end" ></ngb-highlight>
+              </td>
+              <td>
+                <ngb-highlight [result]="table.type" ></ngb-highlight>
+              </td>
+              <td>
+                <i class="uil uil-edit-alt font-size-14" ></i>Download
                 <i class="uil uil-multiply font-size-14" ></i>Delete
               </td>
             </tr>

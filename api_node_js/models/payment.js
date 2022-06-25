@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       models.payment.belongsTo(models.transaction)
-      models.payment.hasOne(models.certificate)
+      //models.payment.hasOne(models.certificate)
     }
   }
   payment.init({
