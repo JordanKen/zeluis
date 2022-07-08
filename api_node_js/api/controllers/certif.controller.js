@@ -3,12 +3,11 @@ const models = require('../../models');
 const {Op, UUID} = require("sequelize");
 
 const postCertif = async (req, res) => {
-    console.log(req.body.h_name)
+    console.log(req.body)
 
-    await axios.post("http://localhost:5000/post_json", {h_name:req.body.h_name}).then(
+    /*await axios.post("http://localhost:5000/post_json", {subject_name:req.body.subject_name}).then(
         result => {
             if(result.data){
-                console.log(result.data)
                 try {
                     let certificate = {
                         subject_name:result.data.subject_name,
@@ -28,9 +27,11 @@ const postCertif = async (req, res) => {
                             res.status(200).json({status: true, reponse: {message: "certificate create successful !", data: result}})
                         })
                         .catch(err => {
+                             console.log(err)
                             res.status(400).json({status: false, error: err})
                         });
                 } catch (error) {
+                    console.log(error)
                     res.status(400).json({status: false, error: error})
                 }
             }else {
@@ -39,7 +40,7 @@ const postCertif = async (req, res) => {
 
         }
     );
-    /*
+    
     if(bidbelong){
         res.status(200).send({status: true, response: bidbelong});
     }else{

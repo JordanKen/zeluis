@@ -11,8 +11,8 @@ import cert_code
 # the associated function.
 @app.route('/post_json', methods=['POST'])
 def post():
-    print(request.json["h_name"])
-    return cert_code.cert(request.json["h_name"])
+    print(request.json["subject_name"])
+    return cert_code.cert(request.json["subject_name"])
 
 @app.route('/')
 # ‘/’ URL is bound with hello_world() function.

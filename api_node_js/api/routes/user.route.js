@@ -18,9 +18,7 @@ var runUplaod = upload.fields([{
 
 users.get("/", async (req, res) => {
     // View all list user
-    models.user.findAll({
-        include:[models.vehicule]
-    })
+    models.user.findAll()
         .then((user) => {
             if (user) {
                 res.status(200).send({
@@ -34,6 +32,7 @@ users.get("/", async (req, res) => {
             }
         })
         .catch((err) => {
+            console.log(err)
             res.status(500).json({status: false, error: err});
         });
 });

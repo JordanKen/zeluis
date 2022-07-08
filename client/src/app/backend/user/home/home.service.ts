@@ -76,22 +76,16 @@ export class HomeService {
     totalRecords: 0
   };
   private pipe: PipeTransform;
-  constructor(private http: HttpClient, private authService: AuthService) {
-    this.authService.getUserByToken().subscribe(
-      data => {
-        this.currentUser = data['response'].user;
-        console.log(this.currentUser)
-      }
-    );
+  constructor(private http: HttpClient) {
   }
 
   getAll(id): Observable<any[]> {
       return this.http.get<any>(API_USERS_URL + 'certification', { params: { 'user_id': id } });
   }
-  createCertificate(h_name) {
+  createCertificate(h_name, id): Observable<any[]> {
     let fd = new FormData();
-    fd.append('h_name', h_name)
-    fd.append('user_id', this.currentUser.id.toString())
+    fd.append('subject_name', h_name)
+    fd.append('user_id', id)
     return this.http.post<any>(API_USERS_URL + 'certification', fd);
   }
 

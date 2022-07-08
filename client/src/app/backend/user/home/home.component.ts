@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   constructor(public service: HomeService, private modalService: NgbModal, private formBuilder: FormBuilder, private authService:AuthService) {
     this.certificateForm = this.formBuilder.group({
-      h_name: ['', [Validators.required]],
+      subject_name: ['', [Validators.required]],
     });
 
     this.authService.getUserByToken().subscribe(
@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
           this.currentUser = data['response'].user;
           console.log(this.currentUser)
           this._fetchData();
+          console.log(this.tables$);
         }
       }
     )
@@ -53,14 +54,13 @@ export class HomeComponent implements OnInit {
       label: 'Certificats',
       active: true
     }];
-    console.log(this.tables$);
   }
 
   _fetchData() {
     this.service.getAll(this.currentUser.id).subscribe(
       res => {
-        this.tableData = res["data"];
-        console.log(res)
+        this.tableData = res["reponse"].data;
+        console.log(this.tableData)
       }
     );
   }
@@ -81,7 +81,7 @@ export class HomeComponent implements OnInit {
   }
 
   save() {
-    this.service.createCertificate(this.certificateForm.get("h_name").value);
+    this.service.createCertificate(this.certificateForm.get("subject_name").value, this.currentUser.id).subscribe();
     this.modalService.dismissAll();
   }
 
