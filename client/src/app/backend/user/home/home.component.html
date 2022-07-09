@@ -9,25 +9,25 @@
           </p>
           <ng-template #content let-modal>
             <div class="modal-header">
-              <h4 class="modal-title" id="modal-basic-title">Ajouter un certificat</h4>
+              <h4 class="modal-title" id="modal-basic-title">Acheter un certificat</h4>
               <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              <form [formGroup]="garageForm" name="formG">
+              <form [formGroup]="certificateForm" name="formG">
                 <div class="form-group">
                   <label for="name">Company name</label>
                   <div class="input-group">
-                    <input id="certname" formControlName="certname" type="text" class="form-control" placeholder="Company name">
+                    <input id="certname" formControlName="subject_name" type="text" class="form-control" placeholder="Company name">
                   </div>
                   <label>BP Company</label>
                   <div class="input-group">
-                    <input id="bpcompany" formControlName="bpcompany" type="text" class="form-control" placeholder="example: BP:15002" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                    <input id="bpcompany" type="text" class="form-control" placeholder="example: BP:15002" name="dp" ngbDatepicker #dp="ngbDatepicker">
                   </div>
                   <label>Number</label>
                   <div class="input-group">
-                    <input formControlName="number" id="number" type="number" class="form-control" placeholder="enter the number here" name="nbr" ngbDatepicker #dp="ngbDatepicker">
+                    <input  id="number" type="number" class="form-control" placeholder="enter the number here" name="nbr" ngbDatepicker #dp="ngbDatepicker">
                   </div>
     
                   
@@ -61,40 +61,41 @@
               <th sortable="validity_begin">Start date</th>
               <th sortable="validity_end">End date</th>
               <th sortable="type">Type</th>
+              <th sortable="type">Actions</th>
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let table of tableData">
+            <tr tr *ngFor="let table of tableData">
               <td>
-                <ngb-highlight [result]="table.id" ></ngb-highlight>
+                {{table.id}} 
               </td>
               <td>
-                <ngb-highlight [result]="table.subject_name" ></ngb-highlight>
+                {{table.subject_name}}
               </td>
               <td>
-                <ngb-highlight [result]="table.ca_name" ></ngb-highlight>
+                {{table.ca_name}}
               </td>
               <td>
-                <ngb-highlight [result]="table.version" ></ngb-highlight>
+                {{table.version}}
               </td>
               <td>
-                <ngb-highlight [result]="table.serial_num" ></ngb-highlight>
+                {{table.serial_num}}
               </td>
               <td>
-                <ngb-highlight [result]="table.hash" ></ngb-highlight>
+                {{table.algo_hash}}
               </td>
               <td>
-                <ngb-highlight [result]="table.validity_begin" ></ngb-highlight>
+                {{table.validity_begin}}
               </td>
               <td>
-                <ngb-highlight [result]="table.validity_end" ></ngb-highlight>
+                {{table.validity_end}}
               </td>
               <td>
-                <ngb-highlight [result]="table.type" ></ngb-highlight>
+                {{table.type}}
               </td>
               <td>
-                <i class="uil uil-edit-alt font-size-14" ></i>Download
-                <i class="uil uil-multiply font-size-14" ></i>Delete
+                <i class="uil uil-down-arrow font-size-14" ></i>
+                <i class="uil uil-multiply font-size-14" ></i>
               </td>
             </tr>
             </tbody>
