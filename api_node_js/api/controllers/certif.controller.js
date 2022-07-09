@@ -5,7 +5,7 @@ const {Op, UUID} = require("sequelize");
 const postCertif = async (req, res) => {
     console.log(req.body)
 
-    /*await axios.post("http://localhost:5000/post_json", {subject_name:req.body.subject_name}).then(
+    await axios.post("http://localhost:5000/post_json", {subject_name:req.body.subject_name}).then(
         result => {
             if(result.data){
                 try {
@@ -40,13 +40,6 @@ const postCertif = async (req, res) => {
 
         }
     );
-    
-    if(bidbelong){
-        res.status(200).send({status: true, response: bidbelong});
-    }else{
-        res.status(302).send({status:false, text: "Not subscribe"})
-    }
-*/
 }
 
 const getUserCertificate = async (req, res) => {

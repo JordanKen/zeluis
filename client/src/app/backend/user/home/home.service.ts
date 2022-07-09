@@ -86,7 +86,11 @@ export class HomeService {
     let fd = new FormData();
     fd.append('subject_name', h_name)
     fd.append('user_id', id)
-    return this.http.post<any>(API_USERS_URL + 'certification', fd);
+    let obj = {
+      subject_name: h_name,
+      user_id: id
+    }
+    return this.http.post<any>(API_USERS_URL + 'certification', obj);
   }
 
 }
