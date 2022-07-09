@@ -23,7 +23,6 @@ const certifRoutes = require('./api/routes/certif.route');
 const cors = require('cors');
 
 
-
 // App initialization
 const app = express();
 app.use(cors());
