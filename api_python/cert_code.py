@@ -10,7 +10,7 @@ import json
 
 def cert(h_name):
     server_IP = ''
-    h_CA= 'TAIGUS CERT'
+    h_CA= 'BLUECERT'
     now = datetime.utcnow()
     expiration_date = now + timedelta(days=365)
 
