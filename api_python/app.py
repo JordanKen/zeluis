@@ -1,6 +1,4 @@
-
 from flask import Flask, request
-  
 # Flask constructor takes the name of 
 # current module (__name__) as argument.
 app = Flask(__name__)
@@ -17,7 +15,7 @@ def post():
 @app.route('/')
 # ‘/’ URL is bound with hello_world() function.
 def hello_world():
-    return 'BLUE IT\'S BLUE'
+    return 'Welcome'
   
 # main driver function
 if __name__ == '__main__':

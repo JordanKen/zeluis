@@ -4,14 +4,17 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class certificate extends Model {
-    /**
+    /*
      * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
+     * This method is not a 
+     * part of Sequelize lifecycle.
+     * The `models/index` file will 
+     * call this method automatically.
      */
     static associate(models) {
       // define association here
-      models.certificate.belongsTo(models.user, {foreignKey:"user_id"})
+      models.certificate.belongsTo(models.user, 
+        {foreignKey:"user_id"})
       //models.certificate.belongsTo(models.payment)
     }
   }

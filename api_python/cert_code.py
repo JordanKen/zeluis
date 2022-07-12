@@ -29,6 +29,7 @@ def cert(h_name):
     ]   )   
 
     alt_names= [ x509.DNSName(h_name)]
+
     alt_names.append(x509.DNSName(server_IP))
 
     basic_contraints = x509.BasicConstraints(ca=True, path_length=0)
@@ -41,12 +42,14 @@ def cert(h_name):
             .not_valid_before(now)
             .not_valid_after(expiration_date)
             .add_extension(basic_contraints, True)
-            .add_extension(x509.SubjectAlternativeName(alt_names), False)
+            .add_extension(x509.SubjectAlternativeName(alt_names),False)
             .sign(key, hashes.SHA256(), default_backend())
     )
 
     my_cert_pem = cert.public_bytes(encoding=serialization.Encoding.PEM)
+
     print(cert)
+    
     my_key_pem = key.private_bytes(
         encoding=serialization.Encoding.PEM,
         format=serialization.PrivateFormat.TraditionalOpenSSL,
