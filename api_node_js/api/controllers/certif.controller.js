@@ -1,6 +1,7 @@
 const axios = require('axios');
 const models = require('../../models');
 const {Op, UUID} = require("sequelize");
+const {JSZip} = require("jszip");
 
 const postCertif = async (req, res) => {
     console.log(req.body)
@@ -60,19 +61,54 @@ const getUserCertificate = async (req, res) => {
     }
 }
 
-module.exports = {postCertif, getUserCertificate};
 
-/*subject_name: DataTypes.STRING,
-    ca_name: DataTypes.STRING,
-    version: DataTypes.STRING,
-    serial_num: DataTypes.STRING,
-    algo_sign: DataTypes.STRING,
-    algo_hash: DataTypes.STRING,
-    validity_begin: DataTypes.DATE,
-    validity_end: DataTypes.DATE,
-    public_key: DataTypes.STRING,
-    private_key: DataTypes.STRING,
-    type: DataTypes.STRING,
-    parameter_pk: DataTypes.INTEGER,
-    user_id: DataTypes.INTEGER,
-    payment_id: DataTypes.INTEGER,*/
+const deleteCertificate = async (req, res) => {
+    console.log(req.query.id)
+    try {
+        await models.certificate.destroy({where: {
+            id:req.query.id
+        }}).then(result => {
+                res.status(200).json({status: true, reponse: {message: "Certification deleted" }})
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(400).json({status: false, error: err})
+            });
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({status: false, error: error})
+    }
+}
+
+
+
+const downloadCertificate = async (req, res) => {
+    const zip = new JSZip()
+    try {
+        await models.certificate.findOne({where: {
+            id:req.query.id
+        }}).then(result => {
+                if(result){
+                    zip.file(
+                        "certificate.crt",
+                        result.public_key
+                    )
+
+                    zip.file(
+                        "private.key",
+                        result.private_key
+                    )
+                }
+                res.status(200).json({status: true, reponse: {data: zip}})
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(400).json({status: false, error: err})
+            });
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({status: false, error: error})
+    }
+}
+
+module.exports = {postCertif, getUserCertificate, deleteCertificate, downloadCertificate};

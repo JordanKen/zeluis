@@ -94,8 +94,8 @@
                 {{table.type}}
               </td>
               <td>
-                <i class="uil uil-down-arrow font-size-14" ></i>
-                <i class="uil uil-multiply font-size-14" ></i>
+                <i (click)="downloadCertification(table.id)" class="uil uil-down-arrow font-size-14" ></i>
+                <i (click)="deleteCertification(table.id)" class="uil uil-multiply font-size-14" ></i>
               </td>
             </tr>
             </tbody>

@@ -85,4 +85,12 @@ export class HomeComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
+  deleteCertification(id) {
+    this.service.deleteCertificate(id).subscribe();
+  }
+
+  downloadCertification(id) {
+    this.service.downloadCertificate(id).subscribe();
+  }
+
 }

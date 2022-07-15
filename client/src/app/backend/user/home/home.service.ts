@@ -93,4 +93,12 @@ export class HomeService {
     return this.http.post<any>(API_USERS_URL + 'certification', obj);
   }
 
+  deleteCertificate(id): Observable<any[]> {
+    return this.http.delete<any>(API_USERS_URL + 'certification', { params: { 'id': id } });
+  }
+
+  downloadCertificate(id): Observable<any[]> {
+    return this.http.get<any>(API_USERS_URL + 'certification/download', { params: { 'user_id': id } });
+  }
+
 }
