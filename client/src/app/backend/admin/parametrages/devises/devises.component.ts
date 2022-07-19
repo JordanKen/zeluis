@@ -62,7 +62,7 @@ export class VehiculeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.breadCrumbItems = [{label: 'Shreyu', path: '/'}, {label: 'Paramètrages', path: '/'}, {
+    this.breadCrumbItems = [{label: 'BlueCert', path: '/'}, {label: 'Paramètrages', path: '/'}, {
       label: 'Marchands',
       active: true
     }];

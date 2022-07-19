@@ -11,7 +11,7 @@ export class CategorieArticlesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.breadCrumbItems = [{ label: 'Shreyu', path: '/' }, { label: 'Publications', path: '/' }, { label: 'Catégories d\'articles', active: true }];
+    this.breadCrumbItems = [{ label: 'BlueCert', path: '/' }, { label: 'Publications', path: '/' }, { label: 'Catégories d\'articles', active: true }];
   }
 
 }

@@ -82,6 +82,11 @@ export class HomeService {
   getAll(id): Observable<any[]> {
       return this.http.get<any>(API_USERS_URL + 'certification', { params: { 'user_id': id } });
   }
+
+  getAlls(): Observable<any[]> {
+    return this.http.get<any>(API_USERS_URL + 'certification');
+}
+
   createCertificate(h_name, id): Observable<any[]> {
     let fd = new FormData();
     fd.append('subject_name', h_name)

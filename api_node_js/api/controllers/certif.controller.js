@@ -45,6 +45,8 @@ const postCertif = async (req, res) => {
 
 const getUserCertificate = async (req, res) => {
     console.log(req.query.user_id)
+    if(req.query.user_id){
+        
     try {
         await models.certificate.findAll({where: {
             user_id:req.query.user_id
@@ -58,6 +60,22 @@ const getUserCertificate = async (req, res) => {
     } catch (error) {
         console.log(error)
         res.status(400).json({status: false, error: error})
+    }
+    }
+    else{
+        
+    try {
+        await models.certificate.findAll().then(result => {
+                res.status(200).json({status: true, reponse: {message: "List of user certificates", data: result}})
+            })
+            .catch(err => {
+                console.log(err)
+                res.status(400).json({status: false, error: err})
+            });
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({status: false, error: error})
+    }
     }
 }
 

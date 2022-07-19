@@ -30,7 +30,7 @@ export class ModeRetraitsComponent implements OnInit {
 
   ngOnInit() {
     // tslint:disable-next-line:max-line-length
-    this.breadCrumbItems = [{ label: 'Shreyu', path: '/' }, { label: 'Paramètrages', path: '/' }, { label: 'Modes de retraits', active: true }];
+    this.breadCrumbItems = [{ label: 'BlueCert', path: '/' }, { label: 'Paramètrages', path: '/' }, { label: 'Modes de retraits', active: true }];
     this._fetchData();
   }
   _fetchData() {

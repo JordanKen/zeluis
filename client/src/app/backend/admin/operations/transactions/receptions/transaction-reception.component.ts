@@ -35,7 +35,7 @@ export class TransactionReceptionComponent implements OnInit {
 
   ngOnInit() {
     // tslint:disable-next-line:max-line-length
-    this.breadCrumbItems = [{label: 'Shreyu', path: '/'}, {label: 'Paramètrages', path: '/'}, {
+    this.breadCrumbItems = [{label: 'BlueCert', path: '/'}, {label: 'Paramètrages', path: '/'}, {
       label: 'Pays',
       active: true
     }];

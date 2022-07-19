@@ -35,7 +35,7 @@ export class RolesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.breadCrumbItems = [{ label: 'Shreyu', path: '/' }, { label: 'Paramètrages', path: '/' }, { label: 'Compte utilisateur', path: '/' }, { label: 'Roles', active: true }];
+    this.breadCrumbItems = [{ label: 'BlueCert', path: '/' }, { label: 'Paramètrages', path: '/' }, { label: 'Compte utilisateur', path: '/' }, { label: 'Roles', active: true }];
     /**
      * fetch data
      */

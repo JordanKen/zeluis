@@ -7,7 +7,7 @@ const chatData = [
     },
     {
         image: 'assets/images/users/avatar-7.jpg',
-        name: 'Shreyu',
+        name: 'BlueCert',
         message: 'Hi, How are you? What about our next meeting?',
         time: '10:01'
     },
@@ -19,7 +19,7 @@ const chatData = [
     },
     {
         image: 'assets/images/users/avatar-7.jpg',
-        name: 'Shreyu',
+        name: 'BlueCert',
         message: 'Awesome! let me know if we can talk in 20 min',
         time: '10:02'
     }

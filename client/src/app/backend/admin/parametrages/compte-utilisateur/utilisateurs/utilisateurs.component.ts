@@ -37,7 +37,7 @@ export class UtilisateursComponent implements OnInit {
 
 
   ngOnInit() {
-    this.breadCrumbItems = [{ label: 'Shreyu', path: '/' }, { label: 'Paramètrages', path: '/' }, { label: 'Compte utilisateur', path: '/' }, { label: 'Utilisateurs', active: true }];
+    this.breadCrumbItems = [{ label: 'BlueCert', path: '/' }, { label: 'Paramètrages', path: '/' }, { label: 'Compte utilisateur', path: '/' }, { label: 'Utilisateurs', active: true }];
     /**
      * fetch data
      */

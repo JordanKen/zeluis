@@ -52,7 +52,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.breadCrumbItems = [{label: 'Shreyu', path: '/'}, {label: 'Acceuil', path: '/'}, {
+    this.breadCrumbItems = [{label: 'BlueCert', path: '/'}, {label: 'Acceuil', path: '/'}, {
       label: 'Certificats',
       active: true
     }];

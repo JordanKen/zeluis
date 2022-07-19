@@ -1,10 +1,10 @@
 <div class="container-fluid">
-  <app-page-title title="Pages des marchands" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <app-page-title title="Pages des utilisateurs" [breadcrumbItems]="breadCrumbItems"></app-page-title>
   <div class="row">
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h4 class="header-title mt-0 mb-1">Table des marchands</h4>
+          <h4 class="header-title mt-0 mb-1">Table des utilisateurs</h4>
           <p class="text-muted font-13 mb-4">
             <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Ajouter un utilisateur</button>
           </p>
@@ -80,12 +80,7 @@
               <th>Id</th>
               <th>Name</th>
               <th>Username</th>
-              <th>Age</th>
               <th>Email</th>
-              <th>Telephone</th>
-              <th>Sexe</th>
-              <th>Status</th>
-              <th>Avatar</th>
               <th>Actions</th>
             </tr>
             </thead>
@@ -95,29 +90,13 @@
                 <ngb-highlight [result]="table.id" ></ngb-highlight>
               </td>
               <td>
-                <ngb-highlight [result]="table.name" ></ngb-highlight>
+                <ngb-highlight [result]="table.firstname" ></ngb-highlight>
               </td>
               <td>
-                <ngb-highlight [result]="table.surname" ></ngb-highlight>
-              </td>
-              <td>
-                <ngb-highlight [result]="table.age" ></ngb-highlight>
+                <ngb-highlight [result]="table.lastname" ></ngb-highlight>
               </td>
               <td>
                 <ngb-highlight [result]="table.email" ></ngb-highlight>
-              </td>
-              <td>
-                <ngb-highlight [result]="table.telephone" ></ngb-highlight>
-              </td>
-              <td>
-                <ngb-highlight [result]="table.sexe"></ngb-highlight>>
-              </td>
-              <td>
-                <p *ngIf="table.isAdmin=='1';" >administrateur</p>
-                <p *ngIf="table.isAdmin=='0';" >utilisateur</p>
-              </td>
-              <td>
-                <ngb-highlight [result]="table.avatar" ></ngb-highlight>>
               </td>
               <td>
                 <i class="uil uil-edit-alt font-size-14" ></i>Edit

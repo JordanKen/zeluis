@@ -7,12 +7,13 @@ import {MerchantSortableDirective} from "../../garages/merchant-sortable.directi
 import {GabaritService} from "./gabarit.service";
 import {Gabarit} from "../../../../models/gabaries";
 import {environment} from "../../../../../environments/environment";
+import { HomeService } from 'src/app/backend/user/home/home.service';
 
 @Component({
   selector: 'app-merchants',
   templateUrl: './Gabarit.component.html',
   styleUrls: ['./Gabarit.component.scss'],
-  providers: [GabaritService, DecimalPipe]
+  providers: [HomeService, DecimalPipe]
 })
 export class GabaritComponent implements OnInit {
   breadCrumbItems: any;
@@ -28,7 +29,7 @@ export class GabaritComponent implements OnInit {
 
   @ViewChildren(MerchantSortableDirective) headers: QueryList<MerchantSortableDirective>;
 
-  constructor(public service: GabaritService, private modalService: NgbModal, private formBuilder: FormBuilder) {
+  constructor(public service: HomeService, private modalService: NgbModal, private formBuilder: FormBuilder) {
     this.gabaritForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       avatar: ['', [Validators.required]],
@@ -37,8 +38,8 @@ export class GabaritComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.breadCrumbItems = [{label: 'Shreyu', path: '/'}, {label: 'Paramètrages', path: '/'}, {
-      label: 'Marchands',
+    this.breadCrumbItems = [{label: 'BlueCert', path: '/'}, {label: 'Paramètrages', path: '/'}, {
+      label: 'Certificats',
       active: true
     }];
 
@@ -46,9 +47,10 @@ export class GabaritComponent implements OnInit {
   }
 
   _fetchData() {
-    this.service.getAll().subscribe(
+    this.service.getAlls().subscribe(
       res => {
-        this.tableData = res;
+        console.log(res)
+        this.tableData = res["reponse"].data;
       }
     );
   }
@@ -68,12 +70,6 @@ export class GabaritComponent implements OnInit {
     this.newGabarit = new Gabarit();
     this.newGabarit.name = this.gabaritForm.get('name').value;
     this.newGabarit.avatar = this.image;
-  }
-
-  save() {
-    this.prepare();
-    this.service.save(this.newGabarit);
-    this.modalService.dismissAll();
   }
 
 
