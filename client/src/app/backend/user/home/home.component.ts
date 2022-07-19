@@ -10,7 +10,9 @@ import { MerchantSortableDirective } from '../../admin/garages/merchant-sortable
 import { HomeService } from './home.service';
 import { Certificate } from 'src/app/models/certificate';
 import { AuthService } from 'src/app/core/auth';
-
+//import {FileSaverOptions} from 'file-saver';
+import * as FileSaver from "file-saver";
+                                                                                                                                                                                         
 @Component({
   selector: 'app-merchants',
   templateUrl: './home.component.html',
@@ -86,11 +88,21 @@ export class HomeComponent implements OnInit {
   }
 
   deleteCertification(id) {
-    this.service.deleteCertificate(id).subscribe();
+    if(confirm("Are you sure to delete this certificate?")) {
+      this.service.deleteCertificate(id).subscribe();
+    }
   }
 
   downloadCertification(id) {
-    this.service.downloadCertificate(id).subscribe();
+    this.service.downloadCertificate(id).subscribe(
+      result => {
+        console.log(result)
+        let blob = new Blob([result.response.data.files['certificate.crt']])
+        const url = window.URL.createObjectURL(blob)
+        FileSaver.saveAs(blob, "cert")
+      }
+    ), 
+    error => console.log(error);
   }
 
 }

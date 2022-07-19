@@ -1,7 +1,7 @@
 const axios = require('axios');
 const models = require('../../models');
 const {Op, UUID} = require("sequelize");
-const {JSZip} = require("jszip");
+const JSZip = require("jszip")
 
 const postCertif = async (req, res) => {
     console.log(req.body)
@@ -89,6 +89,7 @@ const downloadCertificate = async (req, res) => {
             id:req.query.id
         }}).then(result => {
                 if(result){
+                    console.log(result.public_key)
                     zip.file(
                         "certificate.crt",
                         result.public_key
@@ -98,8 +99,9 @@ const downloadCertificate = async (req, res) => {
                         "private.key",
                         result.private_key
                     )
+                    zip.generateAsync()
                 }
-                res.status(200).json({status: true, reponse: {data: zip}})
+                res.status(200).json({status: true, response: {data: zip}})
             })
             .catch(err => {
                 console.log(err)

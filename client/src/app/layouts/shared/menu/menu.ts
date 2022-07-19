@@ -210,31 +210,11 @@ export const MENU: MenuItem[] = [
         }
     },
     {
-        label: 'Opérations',
-        isTitle: true
-    },
-    {
       label: 'Utilisateurs',
       link: '/admin/utilisateur',
     },
   {
-    label: 'Véhicules',
-    link: '/admin/vehicule',
-  },
-  {
-    label: 'Garages',
-    link: '/admin/garage',
-  },
-  {
-    label: 'Marques',
-    link: '/admin/marques',
-  },
-  {
-    label: 'Gabaries',
+    label: 'Certificats',
     link: '/admin/gabaries',
-  },
-  {
-    label: 'Enchères',
-    link: '/admin/enchere',
   },
 ];
