@@ -90,3 +90,35 @@
     </div>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Acheter un certificat</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="certificateForm" name="formG">
+      <div class="form-group">
+        <label for="name">Company name</label>
+        <div class="input-group">
+          <input id="certname" formControlName="subject_name" type="text" class="form-control" placeholder="Company name">
+        </div>
+        <label>BP Company</label>
+        <div class="input-group">
+          <input id="bpcompany" type="text" class="form-control" placeholder="example: BP:15002" name="dp" ngbDatepicker #dp="ngbDatepicker">
+        </div>
+        <label>Number</label>
+        <div class="input-group">
+          <input  id="number" type="number" class="form-control" placeholder="enter the number here" name="nbr" ngbDatepicker #dp="ngbDatepicker">
+        </div>
+
+        
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark"  (click)="save()">Save</button>
+  </div>
+</ng-template>

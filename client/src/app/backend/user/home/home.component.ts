@@ -59,12 +59,17 @@ export class HomeComponent implements OnInit {
   }
 
   _fetchData() {
-    this.service.getAll(this.currentUser.id).subscribe(
-      res => {
-        this.tableData = res["reponse"].data;
-        console.log(this.tableData)
-      }
-    );
+    try{
+      this.service.getAll(this.currentUser.id).subscribe(
+        res => {
+          this.tableData = res["reponse"].data;
+          console.log(this.tableData)
+        }
+      );
+    }catch(e){
+      console.log(e)
+    }
+
   }
 
   handleFileInput(files: FileList) {
